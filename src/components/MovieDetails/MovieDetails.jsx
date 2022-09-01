@@ -14,18 +14,31 @@ export default function MovieDetails() {
   useEffect(() => {
     fetchMovieForId(movieId).then(res => setMovie(res));
   }, [movieId]);
+
   return (
     <>
       {movie && (
         <main style={{ display: 'flex', gap: '30px' }}>
           <img
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            src={
+              movie.poster_path
+                ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
+                : `https://img.freepik.com/free-vector/glitch-error-404-page_23-2148105404.jpg?w=2000`
+            }
             alt=""
             width="350"
           />
           <StyledDiv>
             <h2>{movie.original_title}</h2>
-            <p>Rating: {movie.vote_average}</p>
+            <p>
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Star_icon_stylized.svg/512px-Star_icon_stylized.svg.png"
+                alt="star"
+                width="20px"
+                style={{ display: 'inline-block' }}
+              />{' '}
+              {movie.vote_average}/10
+            </p>
             <h3>Overview</h3>
             <p>{movie.overview}</p>
             <h3>Genres</h3>

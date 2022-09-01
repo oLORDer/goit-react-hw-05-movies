@@ -6,12 +6,18 @@ export const MoviesList = ({ popularMovies }) => {
     <List>
       {popularMovies.map(el => (
         <li key={el.id} id={el.id}>
-          <img
-            src={`https://image.tmdb.org/t/p/original${el.poster_path}`}
-            alt=""
-            width={350}
-          />
-          <Link to={`/movies/${el.id}`}>{el.title}</Link>
+          <Link to={`/movies/${el.id}`}>
+            <img
+              src={
+                el.poster_path
+                  ? `https://image.tmdb.org/t/p/original${el.poster_path}`
+                  : `https://img.freepik.com/free-vector/glitch-error-404-page_23-2148105404.jpg?w=2000`
+              }
+              alt=""
+              width={350}
+            />
+            {el.title}
+          </Link>
         </li>
       ))}
     </List>

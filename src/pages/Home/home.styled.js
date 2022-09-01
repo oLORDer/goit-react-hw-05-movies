@@ -5,6 +5,15 @@ export const List = styled.ul`
   gap: 20px;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  & li {
+    width: 350px;
+    align-items: stretch;
+  }
+
+  & a {
+    font-size: 24px;
+  }
 `;
 
 export const Title = styled.h1`
