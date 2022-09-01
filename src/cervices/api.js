@@ -10,7 +10,12 @@ export const fetchMostPopularMovies = async () => {
   return data;
 };
 
-export const movies = async (name, page) => {
+export const fetchMovieForId = async id => {
+  const { data } = await axios.get(`/movie/${id}&language=en-US`);
+  return data;
+};
+
+export const fetchMoviesForQuery = async (name, page) => {
   const { data } = await axios.get('/search/movie', {
     params: {
       query: name,
