@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { StyledForm } from './inputQuery.styled.js';
+
 export const InputQuery = ({ onSubmitFunc }) => {
   const [query, setQuery] = useState('');
 
@@ -8,21 +10,18 @@ export const InputQuery = ({ onSubmitFunc }) => {
     if (!query) return;
 
     onSubmitFunc(query);
-    setQuery(null);
+    setQuery('');
   };
 
-  // const onChangeInput = e => {
-  //   setQuery(e.target.value);
-  // };
-
   return (
-    <form onSubmit={onSubmitFunc}>
+    <StyledForm onSubmit={onHandleSubmit}>
       <input
         type="text"
         value={query}
+        placeholder="choose you movie"
         onChange={e => setQuery(e.target.value)}
       />
-      <button type="submit">Q</button>
-    </form>
+      <button type="submit">Find</button>
+    </StyledForm>
   );
 };

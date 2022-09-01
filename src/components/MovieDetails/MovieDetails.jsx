@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchMovieForId } from 'cervices/api';
 
+import { StyledDiv } from './movieDetails.styled.js';
+
 export default function MovieDetails() {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -15,13 +17,13 @@ export default function MovieDetails() {
   return (
     <>
       {movie && (
-        <div>
+        <main style={{ display: 'flex', gap: '30px' }}>
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt=""
             width="350"
           />
-          <div>
+          <StyledDiv>
             <h2>{movie.original_title}</h2>
             <p>Rating: {movie.vote_average}</p>
             <h3>Overview</h3>
@@ -32,8 +34,8 @@ export default function MovieDetails() {
                 <li key={i}>{name}</li>
               ))}
             </ul>
-          </div>
-        </div>
+          </StyledDiv>
+        </main>
       )}
     </>
   );

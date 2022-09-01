@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchMoviesForQuery } from 'cervices/api';
 import { InputQuery } from 'components/InputQuery/InputQuery';
-import { Home } from 'pages/Home/Home';
+import { MoviesList } from 'components/MoviesList/MoviesList';
 
 export const Movies = () => {
   const [moviesArr, setMoviesArr] = useState(null);
@@ -14,19 +14,18 @@ export const Movies = () => {
     }
 
     fetchMoviesForQuery(query, page)
-      .then(res => console.log(res))
+      .then(({ results }) => setMoviesArr(results))
       .catch(err => console.log(err));
   }, [query]);
 
   const setNewQuery = e => {
-    e.preventDefault();
     setQuery(e);
   };
 
   return (
-    <>
+    <main>
       <InputQuery onSubmitFunc={setNewQuery} />
-      {moviesArr && <Home />}
-    </>
+      {moviesArr && <MoviesList popularMovies={moviesArr} />}
+    </main>
   );
 };

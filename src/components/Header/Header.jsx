@@ -5,7 +5,7 @@ const NavLinkStyled = styled(NavLink)`
   color: black;
 
   &:not(:last-child) {
-    margin-right: 20px;
+    margin-right: 40px;
   }
 
   &.active {
@@ -13,16 +13,32 @@ const NavLinkStyled = styled(NavLink)`
   }
 `;
 
+const StyledHeader = styled.header`
+  padding: 15px;
+  border-bottom: 2px solid black;
+  background-color: #3e6469;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+
+  & nav {
+    display: flex;
+
+    & a {
+      font-size: 24px;
+    }
+  }
+`;
+
 export const Header = () => {
   return (
     <>
-      <header>
+      <StyledHeader>
         <nav>
           <NavLinkStyled to="/">Home</NavLinkStyled>
           <NavLinkStyled to="/movies">movies</NavLinkStyled>
         </nav>
-        <hr />
-      </header>
+      </StyledHeader>
     </>
   );
 };
