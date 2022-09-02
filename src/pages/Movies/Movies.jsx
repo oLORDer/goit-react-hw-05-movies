@@ -1,30 +1,34 @@
 import { useState, useEffect } from 'react';
 import { fetchMoviesForQuery } from 'cervices/api';
+import { useSearchParams } from 'react-router-dom';
 import { InputQuery } from 'components/InputQuery/InputQuery';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 
 const Movies = () => {
   const [moviesArr, setMoviesArr] = useState(null);
   const [page] = useState(1);
-  const [query, setQuery] = useState(null);
+  // const [query, setQuery] = useState(null);
+  const [queryParams, setQueryParams] = useSearchParams();
+  const serchQueryParam = queryParams.get('query') ?? null;
 
   useEffect(() => {
-    if (!query) {
+    if (!serchQueryParam) {
       return;
     }
 
-    fetchMoviesForQuery(query, page)
+    fetchMoviesForQuery(serchQueryParam, page)
       .then(({ results }) => setMoviesArr(results))
       .catch(err => console.log(err));
-  }, [query, page]);
+  }, [serchQueryParam, page]);
 
   const setNewQuery = e => {
-    setQuery(e);
+    // setQuery(e);
+    setQueryParams({ query: e });
   };
 
   return (
     <main>
-      <InputQuery onSubmitFunc={setNewQuery} />
+      <InputQuery onSubmitFunc={setNewQuery} valueQ={serchQueryParam} />
       {moviesArr && <MoviesList popularMovies={moviesArr} />}
     </main>
   );

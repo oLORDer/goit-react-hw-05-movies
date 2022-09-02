@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import { StyledForm } from './inputQuery.styled.js';
 
-export const InputQuery = ({ onSubmitFunc }) => {
-  const [query, setQuery] = useState('');
+export const InputQuery = ({ onSubmitFunc, valueQ }) => {
+  const [query, setQuery] = useState(valueQ ?? '');
 
   const onHandleSubmit = e => {
     e.preventDefault();
