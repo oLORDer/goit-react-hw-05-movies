@@ -16,7 +16,7 @@ export const Movies = () => {
     fetchMoviesForQuery(query, page)
       .then(({ results }) => setMoviesArr(results))
       .catch(err => console.log(err));
-  }, [query]);
+  }, [query, page]);
 
   const setNewQuery = e => {
     setQuery(e);
