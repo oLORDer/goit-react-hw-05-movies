@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { List } from 'pages/Home/home.styled.js';
+import PropTypes from 'prop-types';
 
 export const MoviesList = ({ popularMovies }) => {
   return (
@@ -22,4 +23,8 @@ export const MoviesList = ({ popularMovies }) => {
       ))}
     </List>
   );
+};
+
+MoviesList.propTypes = {
+  popularMovies: PropTypes.array,
 };

@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet } from 'react-router-dom';
 import { fetchMovieForId } from 'cervices/api';
 
 import { StyledDiv } from './movieDetails.styled.js';
 
 export default function MovieDetails() {
   const [movie, setMovie] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   const { movieId } = useParams();
 

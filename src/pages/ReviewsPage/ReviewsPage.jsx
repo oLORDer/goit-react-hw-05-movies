@@ -14,20 +14,24 @@ const ReviewsPage = () => {
 
   return (
     <ul>
-      {reviews?.map(({ author, content, author_details, id }) => (
-        <li key={id}>
-          <img
-            src={
-              author_details.avatar_path?.slice(1) ||
-              `https://img.freepik.com/free-vector/glitch-error-404-page_23-2148105404.jpg?w=2000`
-            }
-            alt={author}
-            width="100px"
-          />
-          <p>Comment: {content}</p>
-          <p>Author: {author}</p>
-        </li>
-      ))}
+      {reviews?.length > 0 ? (
+        reviews.map(({ author, content, author_details, id }) => (
+          <li key={id}>
+            <img
+              src={
+                author_details.avatar_path?.slice(1) ||
+                `https://img.freepik.com/free-vector/glitch-error-404-page_23-2148105404.jpg?w=2000`
+              }
+              alt={author}
+              width="100px"
+            />
+            <p>Comment: {content}</p>
+            <p>Author: {author}</p>
+          </li>
+        ))
+      ) : (
+        <h2>Havent any review</h2>
+      )}
     </ul>
   );
 };
