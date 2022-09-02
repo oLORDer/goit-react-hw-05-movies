@@ -19,9 +19,10 @@ export default function MovieDetails() {
     <>
       {movie && (
         <main>
-          <div
-            style={{ display: 'flex', gap: '30px', 'margin-bottom': '30px' }}
-          >
+          <Link to="/">
+            <span style={{ padding: '5px' }}>back</span>
+          </Link>
+          <div style={{ display: 'flex', gap: '30px', margin: '30px 0' }}>
             <img
               src={
                 movie.poster_path

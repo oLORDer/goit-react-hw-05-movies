@@ -5,7 +5,7 @@ import { MoviesList } from 'components/MoviesList/MoviesList.jsx';
 // styles
 import { Title } from 'pages/Home/home.styled.js';
 
-export const Home = () => {
+const Home = () => {
   const [popularMovies, setPopularMovies] = useState(null);
 
   useEffect(() => {
@@ -21,3 +21,5 @@ export const Home = () => {
     </main>
   );
 };
+
+export default Home;

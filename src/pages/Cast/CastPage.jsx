@@ -4,7 +4,7 @@ import { fetchCast } from 'cervices/api';
 
 import { StyledList } from './castPage.styled';
 
-export const CastPage = () => {
+const CastPage = () => {
   const [cost, setCost] = useState(null);
   const { movieId } = useParams();
 
@@ -14,7 +14,6 @@ export const CastPage = () => {
       .catch(error => console.log(error));
   }, [movieId]);
 
-  console.log(movieId);
   return (
     <StyledList>
       {cost?.map(({ profile_path, name, character, id }) => (
@@ -35,3 +34,5 @@ export const CastPage = () => {
     </StyledList>
   );
 };
+
+export default CastPage;

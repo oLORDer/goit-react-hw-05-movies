@@ -3,7 +3,7 @@ import { fetchMoviesForQuery } from 'cervices/api';
 import { InputQuery } from 'components/InputQuery/InputQuery';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 
-export const Movies = () => {
+const Movies = () => {
   const [moviesArr, setMoviesArr] = useState(null);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState(null);
@@ -29,3 +29,5 @@ export const Movies = () => {
     </main>
   );
 };
+
+export default Movies;
